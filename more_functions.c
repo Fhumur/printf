@@ -29,7 +29,7 @@ int print_unsigned(va_list types, char buffer[],
 
 	while (num > 0) /* while loop */
 	{
-		buffer[i--] = (num % 10) + '0';
+		buffer[f--] = (num % 10) + '0';
 		num /= 10;
 	} /* end of while */
 

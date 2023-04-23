@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
 			if (buff_ind == BUFF_SIZE)
 				print_buffer(buffer, &buff_ind);
 			/* write(1, &format[f], 1);*/
-			printed_chars++;
+			output_chars++;
 		}
 		else /* else statement */
 		{
@@ -46,11 +46,11 @@ int _printf(const char *format, ...)
 			precision = get_precision(format, &f, vlist);
 			size = get_size(format, &f);
 			++f;
-			printed = handle_print(format, &f, vlist, buffer,
+			prints = handle_print(format, &f, vlist, buffer,
 				flags, width, precision, size);
-			if (printed == -1)
+			if (prints == -1)
 				return (-1);
-			printed_chars += printed;
+			output_chars += prints;
 		}
 	}
 
@@ -58,7 +58,7 @@ int _printf(const char *format, ...)
 
 	va_end(vlist); /*close va_list*/
 
-	return (printed_chars); /* return value after function runs */
+	return (output_chars); /* return value after function runs */
 }
 
 /**
